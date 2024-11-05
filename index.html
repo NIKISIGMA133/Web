@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nugget Tahu Sehat</title>
+    <style>
+        /* CSS Dasar */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #ffcc80;
+            color: #333;
+            text-align: center;
+            padding: 1em;
+        }
+
+        section {
+            padding: 2em 1em;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        h1, h2 {
+            color: #ff8c00;
+        }
+
+        p, ul, ol {
+            max-width: 600px;
+            margin: auto;
+            text-align: justify;
+        }
+
+        img {
+            display: block;
+            max-width: 300px;
+            margin: 10px auto;
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #ffcc80;
+            color: #333;
+            text-align: center;
+            padding: 1em;
+        }
+
+        /* Styling Formulir */
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 1em;
+            background: #f9f9f9;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5em;
+            margin-bottom: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            background-color: #ff8c00;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover,
+        input[type="reset"]:hover {
+            background-color: #e07a00;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Nugget Tahu Sehat</h1>
+        <p>Alternatif Camilan Sehat dan Lezat</p>
+    </header>
+
+    <section id="tentang">
+        <h2>Apa itu Nugget Tahu?</h2>
+        <p>Nugget tahu adalah camilan yang terbuat dari tahu, dicampur dengan bahan lain, dibentuk, dan digoreng hingga renyah. Ini adalah alternatif sehat yang kaya protein nabati.</p>
+        <img src="https://example.com/tahu.jpg" alt="Gambar Tahu">
+    </section>
+
+    <section id="bahan">
+        <h2>Bahan-bahan</h2>
+        <ul>
+            <li>500 gram tahu putih</li>
+            <li>100 gram tepung roti</li>
+            <li>1 butir telur</li>
+            <li>1 batang daun bawang, cincang halus</li>
+            <li>Garam dan merica secukupnya</li>
+        </ul>
+        <img src="https://example.com/bahan.jpg" alt="Gambar Bahan-bahan">
+    </section>
+
+    <section id="cara-pembuatan">
+        <h2>Cara Membuat Nugget Tahu</h2>
+        <ol>
+            <li>Hancurkan tahu hingga lembut.</li>
+            <li>Campur dengan bahan lainnya hingga merata.</li>
+            <li>Bentuk adonan menjadi nugget dan lapisi dengan tepung roti.</li>
+            <li>Goreng hingga berwarna kecoklatan.</li>
+        </ol>
+        <img src="https://example.com/proses.jpg" alt="Proses Pembuatan">
+    </section>
+
+    <section id="tips">
+        <h2>Tips Penyajian</h2>
+        <p>Hidangkan nugget tahu dengan saus sambal atau mayones untuk rasa yang lebih lezat. Nugget ini juga bisa dibekukan untuk dimakan kapan saja.</p>
+        <img src="https://drive.google.com/uc?export=view&id=1BMEvN8LdRcv6bfLckzMgWvlsMim-uqRR" alt="Tips Penyajian">
+    </section>
+
+    <section id="pesan">
+        <h2>Pesan Nugget Tahu</h2>
+        <p>Isi formulir di bawah ini untuk memesan nugget tahu:</p>
+        
+        <form action="mailto:nikisorong640@gmail.com" method="get" enctype="text/plain">
+            <label for="name">Nama:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="quantity">Jumlah Pesanan (bungkus):</label>
+            <input type="number" id="quantity" name="quantity" required>
+            
+            <label for="address">Alamat Pengirim:</label>
+            <input type="text" id="address" name="address" required>
+            
+            <input type="submit" value="Pesan Nugget Tahu">
+            <input type="reset" value="Reset">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Nugget Tahu Sehat. Semua Hak Dilindungi.</p>
+    </footer>
+
+    <script>
+        // Animasi Scroll Muncul dan Hilang
+        const sections = document.querySelectorAll("section");
+
+        function handleScrollAnimation() {
+            sections.forEach((section) => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const sectionBottom = section.getBoundingClientRect().bottom;
+                const windowHeight = window.innerHeight;
+
+                // Muncul saat bagian bawah elemen masuk layar, hilang saat keluar layar
+                if (sectionTop < windowHeight && sectionBottom > 0) {
+                    section.classList.add("show");
+                } else {
+                    section.classList.remove("show");
+                }
+            });
+        }
+
+        window.addEventListener("scroll", handleScrollAnimation);
+        window.addEventListener("load", handleScrollAnimation);
+    </script>
+</body>
+</html>
